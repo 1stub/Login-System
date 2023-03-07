@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "login.h"
 
 /*void loginUser()
@@ -57,33 +58,42 @@
 
 int findUsername()
 {
-	std::ifstream usernames; usernames.open("usernames.txt");
+	std::ifstream usernames("usernames.txt");
+	std::vector<std::string> usernameList;
+
+	// read all usernames from the file into a vector
 	int count = 0;
-	int lineNum = 0;	
-	int x{ 0 };
 	if (usernames.is_open())
 	{
-		while (x != 1)
+		std::string line;
+		while (std::getline(usernames, line))
 		{
-			std::cout << "Enter your Username: " << std::endl;
-			std::string usernameLogin;
-			std::cin >> usernameLogin;
-			std::string line;
-			bool found = false;
-			while (std::getline(usernames, line) && !found)
+			count++;
+			usernameList.push_back(line);
+		}
+		usernames.close();
+	}
+	bool found = false;
+	while (!found)
+	{
+		std::cout << "Enter your Username: " << std::endl;
+		std::string usernameLogin;
+		std::cin >> usernameLogin;
+		for (const auto& username : usernameList)
+		{
+			if (username == usernameLogin)
 			{
-				count++;
-				if (line.find(usernameLogin) != std::string::npos)
-				{
-					found = true;
-					x = 1;
-					usernames.close();
-				}
-				if (!found)
-				{
-					std::cout << "Username not found. Please re-enter." << std::endl;
-				}
+				found = true;
+				break;
 			}
+		}
+		if (!found)
+		{
+			std::cout << "Username not found. Please re-enter." << std::endl;
+		}
+		else
+		{
+			count = usernameList.size();
 		}
 	}
 	return count;
