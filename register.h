@@ -1,2 +1,3 @@
 #pragma once
-void newUser();
+void newUserUsername();
+void newUserPassword();

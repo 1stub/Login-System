@@ -3,20 +3,28 @@
 #include <string>
 #include "register.h"
 
-void newUser()
+void newUserUsername()
 {
-	std::cout << "Please create a username: " << std::endl;
-	std::string newuser;
-	std::cin >> newuser;
-	std::ofstream usernames;
-	usernames.open("usernames.txt");
-	usernames << newuser;
-	usernames.close();
-	std::cout << "Please create a password: " << std::endl;
-	std::string newpass;
-	std::cin >> newpass;
-	std::ofstream passwords;
-	passwords.open("passwords.txt");
-	passwords << newpass;
-	passwords.close();
+	std::ofstream fout("usernames.txt", std::ofstream::out | std::ofstream::app);
+	if (fout.is_open())
+	{
+		std::cout << "Please create a username: " << std::endl;
+		std::string newuser;
+		std::cin >> newuser;
+		fout << newuser << std::endl;
+	}
 }
+void newUserPassword()
+{
+	std::ofstream fout("passwords.txt", std::ofstream::out | std::ofstream::app);
+
+	if (fout.is_open())
+	{
+		std::cout << "Please create a password: " << std::endl;
+		std::string newpass;
+		std::cin >> newpass;
+		fout << newpass << std::endl;
+	}
+}
+
+

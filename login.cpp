@@ -47,6 +47,7 @@ int findUsername()
 	return count;
 }
 
+// password still very broken :(
 void findPassword(int count)
 {
 	std::ifstream passwords; passwords.open("passwords.txt");
@@ -72,7 +73,8 @@ void findPassword(int count)
 			std::string vector_val = passwordList[count-1];
 			if (passwordLogin == vector_val)
 			{
-				std::cout << "Those passwords match!" << std::endl;
+				std::cout << "Valid Username and Password" << std::endl;
+				found = true;
 				break;
 			}
 			else

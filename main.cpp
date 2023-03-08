@@ -19,7 +19,8 @@ int main()
 		}
 		else if (choice == 2)
 		{
-			newUser();
+			newUserUsername();
+			newUserPassword();
 		}
 		else
 		{
