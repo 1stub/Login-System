@@ -16,7 +16,6 @@ int findUsername()
 		std::string line;
 		while (std::getline(usernames, line))
 		{
-			count++;
 			usernameList.push_back(line);
 		}
 		usernames.close();
@@ -27,9 +26,10 @@ int findUsername()
 		std::cout << "Enter your Username: " << std::endl;
 		std::string usernameLogin;
 		std::cin >> usernameLogin;
-		for (const auto& username : usernameList)
+		for (const auto& usernames : usernameList)
 		{
-			if (username == usernameLogin)
+			count++;
+			if (usernames == usernameLogin)
 			{
 				found = true;
 				break;
@@ -39,15 +39,9 @@ int findUsername()
 		{
 			std::cout << "Username not found. Please re-enter." << std::endl;
 		}
-		else
-		{
-			count = usernameList.size();
-		}
 	}
 	return count;
 }
-
-// password still very broken :(
 void findPassword(int count)
 {
 	std::ifstream passwords; passwords.open("passwords.txt");
@@ -73,7 +67,7 @@ void findPassword(int count)
 			std::string vector_val = passwordList[count-1];
 			if (passwordLogin == vector_val)
 			{
-				std::cout << "Valid Username and Password" << std::endl;
+				std::cout << "Valid Username and Password. Welcome to my software!" << std::endl;
 				found = true;
 				break;
 			}

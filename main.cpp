@@ -10,6 +10,7 @@ int main()
 		std::cout << "Please select one of the options below." << std::endl;
 		std::cout << "[1] Login" << std::endl;
 		std::cout << "[2] Register" << std::endl;
+		std::cout << "[3] Exit" << std::endl;
 		int choice{};
 		std::cin >> choice;
 		if (choice == 1)
@@ -21,6 +22,10 @@ int main()
 		{
 			newUserUsername();
 			newUserPassword();
+		}
+		else if (choice == 3)
+		{
+			break;
 		}
 		else
 		{
