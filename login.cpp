@@ -63,8 +63,8 @@ void findPassword(int count)
 		std::string passwordLogin;
 		std::cin >> passwordLogin;
 		//for (const auto& password : passwordList)
-		count = count - 1;
-		std::string vector_val = passwordList[count];
+		const int COUNT = count - 1;
+		std::string vector_val = passwordList[COUNT];
 			if (passwordLogin == vector_val)
 			{
 				std::cout << "Valid Username and Password. Welcome to my software!" << std::endl;
